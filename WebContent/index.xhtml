@@ -9,13 +9,17 @@
 	<title>Cadastro de Produtos </title>
 </h:head>
 <h:body>
+		<h:form>
+			Bem vindo #{loginBean.usuario} | 
+			<h:commandLink action="#{loginBean.logout}" value="Sair" />
+		</h:form>
 		<h2>Cadastro de Produtos</h2>
 		<h:form>
 			<h:commandLink value="Ajuda para essa tela" 
 				action="#{gp.obterAjuda}" />
 		</h:form>		
 		<h:form>
-			<h:messages style="color:green"/>
+			<h:messages errorStyle="color:red; list-style:none" infoStyle="color:green;" />
 			<h:panelGrid columns="2" >
 			Nome:
 			<h:panelGroup>

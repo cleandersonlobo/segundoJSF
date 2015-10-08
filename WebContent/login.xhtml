@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title> Login </title>
+	<style type="text/css">
+		.formLogin{
+			margin: 0 auto;
+			width: 200px;
+		}
+		h1{text-align: center;}
+	</style>
+</h:head>
+<h:body>
+	
+	<h:form styleClass="formLogin">
+		<h1>Login</h1>
+		
+		<h:panelGrid columns="2" >
+			Usuário:
+			<h:panelGroup>
+				<h:inputText value="#{loginBean.usuario}" id="usuario" />
+				<h:message for="usuario" />	
+			</h:panelGroup>
+			Senha:
+			<h:panelGroup>
+				<h:inputSecret value="#{loginBean.senha}" id="senha" />
+				<h:message for="senha" />
+			</h:panelGroup>
+			<h:outputText />
+			<h:commandButton value="Login" style="width:131px" action="#{loginBean.loginValidacao}"/>
+		</h:panelGrid>
+		<h:messages layout="table" globalOnly="true" showDetail="false" warnStyle="color:orange"/>
+	</h:form>
+</h:body>
+</html>

@@ -10,26 +10,40 @@
 </h:head>
 <h:body>
 	<h2>Lista de Produtos </h2>
+	
+	<h:form>
 		<h:dataTable var="p" value="#{gp.produtos}" 
 			rendered="#{not empty gp.produtos}">
 			<h:column>
 				<f:facet name="header">Nome</f:facet>
-				<h:outputText value="#{p.nome}" />
+				<h:outputText value="#{p.nome}" rendered="#{!gpBacking2.campoEditavel}"  />
+				<h:inputText value="#{p.nome}" rendered="#{gpBacking2.campoEditavel}"/>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Fabricante</f:facet>
-				<h:outputText value="#{p.fabricante}" />
+				<h:outputText value="#{p.fabricante}" rendered="#{!gpBacking2.campoEditavel}" />
+				<h:inputText value="#{p.fabricante}" rendered="#{gpBacking2.campoEditavel}" />
 			</h:column>
 			<h:column>
 				<f:facet name="header">Categoria</f:facet>
-				<h:outputText value="#{p.categoria}" />
+				<h:outputText value="#{p.categoria}" rendered="#{!gpBacking2.campoEditavel}" />
+				<h:inputText value="#{p.categoria}" rendered="#{gpBacking2.campoEditavel}" />
 			</h:column>
-			
+			<h:column>
+				<f:facet name="header"></f:facet>
+					<h:commandButton  value="Editar" action="#{gpBacking2.botaoEdiar}" 
+					rendered="#{!gpBacking2.campoEditavel}" />
+					<h:commandButton  value="Salvar" action="#{gp.editar(p)}" rendered="#{gpBacking2.campoEditavel}"
+					actionListener="#{gpBacking2.botaoEdiar()}"/>
+					
+			</h:column>
 		</h:dataTable>
-		
+		</h:form>
 		<h:form>
+		<h:messages layout="table" infoStyle="color:green" />
 		<h:outputText value="Nenhum produto cadastrado" 
 			rendered="#{empty gp.produtos}"/>
+			<br/>
 			<h:commandButton action="index?faces-redirect=true" value="Voltar" />
 		</h:form>
 </h:body>
